@@ -1,44 +1,39 @@
-# Basic usage of two-way selection:
-temperature = 25
+#initialize
+animal = Hash.new
+animal["type"] = "dog"
+animal["breed"] = "husky"
+animal["age"] = 4
 
-if temperature > 30
-  puts "It's a hot day!"
+#print
+puts(animal["type"])
+
+#add a new element
+animal["owner"] = "Maryam"
+puts(animal["owner"])
+
+#remove an element
+animal.delete("owner")
+puts(animal["owner"])
+
+#modify an element
+animal["breed"] = "chihuahua"
+puts(animal["breed"])
+
+#search for key
+if animal.key?("breed")
+  puts ("key exists.")
 else
-  puts "It's not too hot."
+  puts ("key doesnt exist")
 end
 
-# Basic usage of 2-way selection with logical expression:
-is_raining = true
-is_snowing = false
-
-if is_raining && !is_snowing
-  puts "It's raining but not snowing."
+#search for value
+if animal.value?("husky")
+  puts "value exists"
 else
-  puts "It's not raining or it's snowing."
+  puts "value does not exist"
 end
 
-# Example using elsif:
-age = 25
-
-if age < 18
-  puts "You are under 18 years old."
-elsif age >= 18
-  puts "You are 18 years old or older."
-end
-
-# Nested example:
-has_pet = true
-pet_type = "dog"
-pet_name = "Fido"
-
-if has_pet
-  if pet_type == "dog"
-    puts "#{pet_name} is a dog"
-  elsif pet_type == "cat"
-    puts "#{pet_name} is a cat and cats are superior to dogs"
-  else
-    puts "#{pet_name} is probably a hamster, i want to get a hamster"
-  end
-else
-  puts "You don't have a pet"
+#loop through
+animal.each do |key, value|
+  puts "#{key}: #{value}"
 end

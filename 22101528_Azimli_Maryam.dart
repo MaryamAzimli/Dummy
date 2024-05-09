@@ -1,42 +1,56 @@
 void main() {
-  int x = 12;
-  bool y = false;
-  bool iHaveACat = true;
-  int catOnesAge = 5;
-  int catTwosAge = 10;
+//using curly braces
+  var subject = {
+    'class_name': "Programming Languages",
+    'class_faculty': "CS",
+    'class_number': 315,
+    'class_professor': 'H. Altay Guvenir'
+  };
 
-  //2way selection using comaprison operations
-  if (x > x / 3) {
-    print("x is greater than x/3");
+  subject['class_classroom'] = 'EB-204';
+  subject.remove('class_number');
+  subject['class_professor'] = 'Altay Guvenir';
+
+  //get the value for the given key
+  print('Getting values for maps created with curly braces: ');
+  print('Class Name: ${subject['class_name']}');
+  print('Class Faculty: ${subject['class_faculty']}');
+  print('Class Number: ${subject['class_number']}');
+  print('Class Professor: ${subject['class_professor']}');
+  print('Class classroom: ${subject['class_classroom']}\n');
+
+  if (subject.containsKey('class_number')) {
+    print('Subject has class_number key.');
   } else {
-    print("x is not greater than x/3");
+    print('Subject does not have class_number key.');
   }
 
-  //2way selection using logical expressions
-  if (y || x > 15) {
-    print("y is true or x is greater than 15");
+  if (subject.containsValue('CS')) {
+    print('Subject has value "CS".');
   } else {
-    print("y is falsy and x is less than 15");
+    print('Subject does not have value "CS".\n');
   }
 
-  //usage of else if
-
-  if (y) {
-    print("y is true");
-  } else if (x < 15) {
-    print("x is less than 15");
-  } else {
-    print("y is falsy and x is greater than 15");
+  void foo(key, value) {
+    print('$key: $value');
   }
 
-  //2way selection using nested ifs.
-  if (iHaveACat) {
-    if (catOnesAge < catTwosAge) {
-      print("Cat one is younger than cat two");
-    } else {
-      print("Cat two is older than cat one");
-    }
-  } else {
-    print("I dont have a cat");
-  }
+  // Loop through the map and apply foo function to each key-value pair
+  subject.forEach((key, value) {
+    foo(key, value);
+  });
+
+  //using Map constructor
+  var subject2 = Map<String, dynamic>();
+  subject2['class_name'] = 'Programming Languages';
+  subject2['class_faculty'] = 'CS';
+  subject2['class_number'] = 315;
+  subject2['class_professor'] = 'H. Altay Guvenir';
+
+  // get the value for the given key
+  print('\nGetting values for maps created with Map constructor: ');
+  print('Class Name: ${subject2['class_name']}');
+  print('Class Faculty: ${subject2['class_faculty']}');
+  print('Class Number: ${subject2['class_number']}');
+  print('Class Professor: ${subject2['class_professor']}\n');
 }

@@ -1,52 +1,41 @@
-class Cat:
-    def __init__(self, name, age, owner):
-        self.name = name
-        self.age = age
-        self.owner = owner
+#initializing
+Student1 = {
+    "name": "Maryam",
+    "age": 20,
+    "department": "Computer Engineering"
+}
 
-def main ():
+#printing
+print(Student1["department"])
 
-    Lil = Cat("Lil", 5, "Sasha")
-    Goldy = Cat("Goldy", 2, "Mary")
-    Creamy_pie = Cat("Creamy-pie", 3, "Sasha")
+#add a new element
+Student1["year"]=3
+print(Student1["year"])
 
-    # Basic usage of two-way selection:
-    x = 12
+#remove
+del Student1["year"]
+#print(Student1["year"])
 
-    if Lil.age>Goldy.age:
-        # true
-        print("Goldy needs to bow at Lil as she is younger")
-    else:
-        print("Lil is younger so she is the one that needs to bow to Goldy")
+#modify
+Student1["department"]="CS"
+print(Student1["department"])
 
-    # Condition containing logical expressions:
-    y = False
-    if y or x > 15:
-        # false
-        print("y is true or x is greater than 15")
-    else:
-        print("y is falsy and x is less than 15")
+#check existence of key
+if "name" in Student1:
+    print("Key exists")
+else:
+    print("Key doesnt exist")
 
-    # Example using elif:
-    age = 18
+#check existence of value
+found=False
+for value in Student1.values():
+    if value == "Maryam":
+        found=True
+        break
+if found:
+    print("Value exists")
+else:
+    print("Value does not exist")
 
-    if age < 18:
-        print("You are under 18 years old")
-    elif age == 18:
-        print("You are 18 years old")
-    else:
-        print("You are older than 18 years")
-
-    # Nested example:
-    i_have_a_cat = True
-    
-
-    if i_have_a_cat:
-        if Creamy_pie.owner == Lil.owner:
-            print(Creamy_pie.owner, " has two cats.")
-        else:
-            print(Creamy_pie.owner, "is owner of creamy-pie and has only onw cat")
-    else:
-        print("I don't have a cat.")
-main()
-    
+for key, value in Student1.items():
+    print(key, value)
