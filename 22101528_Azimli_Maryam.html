@@ -1,0 +1,47 @@
+function main() {
+  let x = 12;
+  let y = false;
+  let iHaveACat = true;
+  let catOnesAge = 5;
+  let catTwosAge = 10;
+
+  if (x > x / 3) {
+    // true
+    console.log("x is greater than x/3");
+  } else {
+    console.log("x is not greater than x/3");
+  }
+
+  // Condition containing logical expressions:
+  if (y || x > 15) {
+    // false
+    console.log("y is true or x is greater than 15");
+  } else {
+    console.log("y is falsy and x is less than 15");
+  }
+
+  if (y) {
+    // false
+    console.log("y is true");
+  } else if (x < 15) {
+    // true
+    console.log("x is less than 15");
+  } else {
+    console.log("y is falsy and x is greater than 15");
+  }
+
+  // Nested
+  if (iHaveACat) {
+    // true
+    if (catOnesAge < catTwosAge) {
+      // true
+      console.log("Cat one is younger than cat two");
+    } else {
+      console.log("Cat two is older than cat one");
+    }
+  } else {
+    console.log("I don't have a cat");
+  }
+}
+
+main();
