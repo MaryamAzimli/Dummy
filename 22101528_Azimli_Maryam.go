@@ -2,61 +2,65 @@ package main
 
 import "fmt"
 
-type Student struct {
-	misses  int
-	present bool
-}
-
 func main() {
 
-	x := 10
-	y := 2
-	Student1 := Student{
-		misses:  1,
-		present: false,
-	}
-	Student2 := Student{
-		misses:  1,
-		present: true,
-	}
+	//using make
 
-	//comparison
-	if (x+y)%2 == 0 {
-		fmt.Println("x is even number")
+	var student = make(map[string]interface{})
+
+	student["name"] = "Maryam"
+	student["age"] = 20
+	student["role"] = "student"
+
+	student["gender"] = "female"          //adding new key
+	delete(student, "age")                //deleting key
+	student["role"] = "undergrad student" //changing key's value
+
+	if _, ok := student["age"]; ok {
+		fmt.Println("Student has \"age\" key.")
 	} else {
-		fmt.Println("x is odd number")
+		fmt.Println("Student does not have \"age\" key.")
 	}
 
-	//logical and else if
-	if Student1.present {
-		fmt.Println("Student1 is present in class")
-	} else if Student2.present {
-		fmt.Println("Student1 is absent from class, but Student2 is present")
-	} else {
-		fmt.Println("both Studen1 and Student2 are absent from class")
-	}
+	searchValue := "female"
 
-	//nested ifs
-	missesAllowed := 5
-	Student3 := Student{
-		misses:  3,
-		present: true,
-	}
-	Student4 := Student{
-		misses:  2,
-		present: false,
-	}
-	if Student3 != Student4 {
-		if Student3.misses > missesAllowed {
-			fmt.Println("Student3 is allowed to Final")
-		} else if Student4.misses < missesAllowed {
-			fmt.Println("Student4 is allowed to Final")
-		} else {
-			fmt.Println("Neither Student3 nor Student3 are allowed to Final")
+	// Check if the value exists in the map
+	var found bool
+	for _, v := range student {
+		if v == searchValue {
+			found = true
+			break
 		}
-
-	} else {
-		fmt.Println("Student3 and Student4 are same people")
 	}
 
+	// Print the result
+	if found {
+		fmt.Printf("The value '%v' exists in the map.\n", searchValue)
+	} else {
+		fmt.Printf("The value '%v' does not exist in the map.\n", searchValue)
+	}
+
+	for key, value := range student { // foo function
+		fmt.Println(key, ":", value)
+	}
+
+	fmt.Println("Initializing using make:") //printing map as a whole
+	fmt.Println("Student: ", student)       //printing map as a whole
+
+	fmt.Println("Name:", student["name"]) // printing specific key's value
+	fmt.Println("Age:", student["age"])
+	fmt.Println("Role:", student["role"])
+	fmt.Println("Gender:", student["gender"])
+
+	// Using composite literal
+	student2 := map[string]interface{}{
+		"name": "Maryam",
+		"age":  20,
+		"role": "student",
+	}
+
+	fmt.Println("\nInitializing using composite literal")
+	fmt.Println("Name:", student2["name"])
+	fmt.Println("Age:", student2["age"])
+	fmt.Println("Role:", student2["role"])
 }
